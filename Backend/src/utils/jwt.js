@@ -1,0 +1,19 @@
+const jwt = require("jsonwebtoken");
+
+const signToken = (userId) => {
+  return jwt.sign({ userId }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN || "7d",
+  });
+};
+
+const cookieOptions = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  maxAge: Number(process.env.COOKIE_MAX_AGE || 7 * 24 * 60 * 60 * 1000),
+};
+
+module.exports = {
+  signToken,
+  cookieOptions,
+};

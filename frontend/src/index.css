@@ -1,0 +1,366 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  background: #f8fafc;
+  color-scheme: light;
+}
+
+html.dark {
+  background: #020617;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f8fafc;
+}
+
+html.dark body {
+  background: #020617;
+}
+
+@media print {
+  body {
+    background: #fff !important;
+  }
+
+  nav,
+  aside,
+  button,
+  input,
+  select,
+  textarea,
+  [data-no-print] {
+    display: none !important;
+  }
+
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  * {
+    box-shadow: none !important;
+  }
+}
+
+:root {
+  --sf-blue: #2563eb;
+  --sf-light-blue: #8fb9ff;
+  --sf-indigo: #6670f6;
+
+  --sf-brown: #d8aa7f;
+  --sf-brown-soft: #f3e5d5;
+
+  --sf-ink: #0b1220;
+  --sf-gray: #64748b;
+  --sf-border: #e2e8f0;
+}
+
+html,
+body {
+  transition:
+    background-color 220ms ease,
+    color 220ms ease;
+}
+
+.sf-brand-mark {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  color: var(--sf-blue);
+}
+
+.sf-brand-mark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.sf-brand-accent {
+  color: var(--sf-blue);
+}
+
+.dark .sf-brand-accent {
+  color: var(--sf-light-blue);
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:not(:disabled) {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+button:not(:disabled):active {
+  transform: translateY(1px) scale(0.985);
+}
+
+button[class*="bg-indigo-600"],
+button[class*="bg-violet-600"],
+button[class*="bg-indigo-500"],
+button[class*="bg-violet-500"] {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  background-image: linear-gradient(
+    135deg,
+    #2563eb 0%,
+    #536dff 54%,
+    #7b61d9 100%
+  ) !important;
+
+  box-shadow: 0 10px 26px rgba(37, 99, 235, 0.17);
+}
+
+.dark button[class*="bg-indigo-600"],
+.dark button[class*="bg-violet-600"],
+.dark button[class*="bg-indigo-500"],
+.dark button[class*="bg-violet-500"] {
+  box-shadow: 0 12px 28px rgba(17, 24, 39, 0.42);
+}
+
+button[class*="bg-indigo-600"]::after,
+button[class*="bg-violet-600"]::after,
+button[class*="bg-indigo-500"]::after,
+button[class*="bg-violet-500"]::after {
+  content: "";
+
+  position: absolute;
+
+  top: -140%;
+  left: -25%;
+
+  width: 50%;
+  height: 380%;
+
+  transform: rotate(25deg) translateX(-220%);
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 25%,
+    rgba(255, 255, 255, 0.35) 42%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(255, 255, 255, 0.35) 58%,
+    rgba(255, 255, 255, 0.08) 75%,
+    transparent 100%
+  );
+
+  transition: transform 850ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+button[class*="bg-indigo-600"]:hover::after,
+button[class*="bg-violet-600"]:hover::after,
+button[class*="bg-indigo-500"]:hover::after,
+button[class*="bg-violet-500"]:hover::after {
+  transform: rotate(25deg) translateX(520%);
+}
+
+button[class*="bg-indigo-600"] > *,
+button[class*="bg-violet-600"] > *,
+button[class*="bg-indigo-500"] > *,
+button[class*="bg-violet-500"] > * {
+  position: relative;
+  z-index: 2;
+}
+
+button.sf-add-button > svg:first-child,
+button:hover > svg.lucide-plus:first-child {
+  transition: transform 240ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+button.sf-add-button:hover > svg:first-child,
+button:hover > svg.lucide-plus:first-child {
+  transform: rotate(360deg);
+}
+
+.sf-select-trigger {
+  display: flex;
+  width: 100%;
+  min-height: 46px;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  border: 1px solid var(--sf-border);
+  border-radius: 14px;
+
+  padding: 0 14px;
+
+  background: rgba(248, 250, 252, 0.92);
+  color: #0f172a;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-align: left;
+}
+
+.dark .sf-select-trigger {
+  border-color: #334155;
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+.sf-select-trigger:hover {
+  border-color: #93a9ff;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.08);
+}
+
+.sf-select-value {
+  color: inherit;
+}
+
+.sf-select-placeholder {
+  color: #94a3b8;
+}
+
+.sf-select-menu {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  top: 100%;
+
+  z-index: 60;
+
+  overflow: hidden;
+
+  border: 1px solid #dbe4f0;
+  border-radius: 16px;
+
+  padding: 6px;
+
+  background: rgba(255, 255, 255, 0.98);
+
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.16);
+
+  transform-origin: top center;
+}
+
+.dark .sf-select-menu {
+  border-color: #334155;
+
+  background: rgba(15, 23, 42, 0.98);
+
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.42);
+}
+
+.sf-select-option {
+  display: flex;
+  width: 100%;
+
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 11px;
+
+  padding: 10px 11px;
+
+  color: #475569;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-align: left;
+}
+
+.sf-select-option:hover {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.sf-select-option.is-selected {
+  background: #eef2ff;
+  color: #3730a3;
+}
+
+.dark .sf-select-option {
+  color: #cbd5e1;
+}
+
+.dark .sf-select-option:hover,
+.dark .sf-select-option.is-selected {
+  background: rgba(99, 102, 241, 0.12);
+  color: #a9c8ff;
+}
+
+.sf-hover-card {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.sf-hover-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.08);
+
+  border-color: #c8d5ff;
+}
+
+.dark .sf-hover-card:hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+
+  border-color: rgba(143, 185, 255, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  80%,
+  100% {
+    transform: rotate(0);
+  }
+
+  84% {
+    transform: rotate(-10deg);
+  }
+
+  88% {
+    transform: rotate(10deg);
+  }
+
+  92% {
+    transform: rotate(-7deg);
+  }
+
+  96% {
+    transform: rotate(5deg);
+  }
+}

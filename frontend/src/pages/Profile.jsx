@@ -1,4 +1,3 @@
-
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Bell,
@@ -26,15 +25,15 @@ import {
 } from "lucide-react";
 import { useRef, useState } from "react";
 
-import { useProfile } from "../context/ProfileContext";
+import { toast } from "sonner";
 import { useAuth } from "../context/AuthContext";
+import { useProfile } from "../context/ProfileContext";
+import { useTheme } from "../context/ThemeContext";
 import {
-  updateProfile as saveProfileApi,
   changePassword as changePasswordApi,
   removeProfileImage as removeProfileImageApi,
+  updateProfile as saveProfileApi,
 } from "../services/auth.service";
-import { toast } from "sonner";
-import { useTheme } from "../context/ThemeContext";
 
 const Profile = () => {
   const { theme, changeTheme } = useTheme();
@@ -97,10 +96,7 @@ const Profile = () => {
   const saveSettings = (updatedSettings) => {
     setSettings(updatedSettings);
 
-    localStorage.setItem(
-      "stockflow-settings",
-      JSON.stringify(updatedSettings)
-    );
+    localStorage.setItem("stockflow-settings", JSON.stringify(updatedSettings));
   };
 
   const handleSettingChange = (key, value) => {
@@ -145,10 +141,7 @@ const Profile = () => {
 
       toast.success("Profile updated successfully.");
     } catch (error) {
-      toast.error(
-        error.response?.data?.message ||
-          "Unable to update profile."
-      );
+      toast.error(error.response?.data?.message || "Unable to update profile.");
     }
   };
 
@@ -173,16 +166,11 @@ const Profile = () => {
     }
 
     if (passwordForm.newPassword.length < 6) {
-      setPasswordError(
-        "New password must contain at least 6 characters."
-      );
+      setPasswordError("New password must contain at least 6 characters.");
       return;
     }
 
-    if (
-      passwordForm.newPassword !==
-      passwordForm.confirmPassword
-    ) {
+    if (passwordForm.newPassword !== passwordForm.confirmPassword) {
       setPasswordError("New passwords do not match.");
       return;
     }
@@ -207,8 +195,7 @@ const Profile = () => {
       setTimeout(() => setPasswordSuccess(false), 3000);
     } catch (error) {
       setPasswordError(
-        error.response?.data?.message ||
-          "Unable to change password."
+        error.response?.data?.message || "Unable to change password.",
       );
     }
   };
@@ -251,7 +238,7 @@ const Profile = () => {
     } catch (error) {
       toast.error(
         error.response?.data?.message ||
-          "Something went wrong while uploading the image."
+          "Something went wrong while uploading the image.",
       );
     } finally {
       setUploading(false);
@@ -269,8 +256,7 @@ const Profile = () => {
       toast.success("Profile picture removed.");
     } catch (error) {
       toast.error(
-        error.response?.data?.message ||
-          "Unable to remove profile picture."
+        error.response?.data?.message || "Unable to remove profile picture.",
       );
     }
   };
@@ -305,8 +291,8 @@ const Profile = () => {
           </h1>
 
           <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500 dark:text-slate-400">
-            Manage your personal information, profile picture,
-            security and StockFlow preferences from one place.
+            Manage your personal information, profile picture, security and
+            StockFlow preferences from one place.
           </p>
         </div>
 
@@ -337,7 +323,6 @@ const Profile = () => {
         <div className="relative px-6 pb-7 sm:px-8">
           <div className="-mt-16 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-end">
-              {/* PROFILE IMAGE */}
               <div className="group relative">
                 <motion.div
                   whileHover={{ scale: 1.03 }}
@@ -360,7 +345,6 @@ const Profile = () => {
                   )}
                 </motion.div>
 
-                {/* CAMERA / UPLOAD BUTTON */}
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
@@ -409,9 +393,7 @@ const Profile = () => {
                 className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet-200 transition hover:bg-violet-700 dark:shadow-violet-950/30"
               >
                 <Upload size={16} />
-                {profileImage
-                  ? "Change Picture"
-                  : "Upload Picture"}
+                {profileImage ? "Change Picture" : "Upload Picture"}
               </button>
 
               {profileImage && (
@@ -613,8 +595,8 @@ const Profile = () => {
                   </h3>
 
                   <p className="mt-1 text-sm leading-6 text-slate-400">
-                    This picture will appear in your dashboard navbar,
-                    sidebar and profile page.
+                    This picture will appear in your dashboard navbar, sidebar
+                    and profile page.
                   </p>
                 </div>
 
@@ -700,10 +682,7 @@ const Profile = () => {
                   description="Receive important account and business updates."
                   checked={settings.emailNotifications}
                   onChange={(value) =>
-                    handleSettingChange(
-                      "emailNotifications",
-                      value
-                    )
+                    handleSettingChange("emailNotifications", value)
                   }
                 />
 
@@ -723,10 +702,7 @@ const Profile = () => {
                   description="Receive notifications about new and completed orders."
                   checked={settings.orderNotifications}
                   onChange={(value) =>
-                    handleSettingChange(
-                      "orderNotifications",
-                      value
-                    )
+                    handleSettingChange("orderNotifications", value)
                   }
                 />
               </div>
@@ -745,9 +721,7 @@ const Profile = () => {
                   icon={Languages}
                   label="Language"
                   value={settings.language}
-                  onChange={(value) =>
-                    handleSettingChange("language", value)
-                  }
+                  onChange={(value) => handleSettingChange("language", value)}
                   options={[
                     {
                       value: "English",
@@ -764,9 +738,7 @@ const Profile = () => {
                   icon={CalendarDays}
                   label="Date Format"
                   value={settings.dateFormat}
-                  onChange={(value) =>
-                    handleSettingChange("dateFormat", value)
-                  }
+                  onChange={(value) => handleSettingChange("dateFormat", value)}
                   options={[
                     {
                       value: "DD/MM/YYYY",
@@ -832,10 +804,7 @@ const Profile = () => {
                 description="Keep your StockFlow account secure with a strong password."
               />
 
-              <form
-                onSubmit={handlePasswordSubmit}
-                className="max-w-2xl pt-6"
-              >
+              <form onSubmit={handlePasswordSubmit} className="max-w-2xl pt-6">
                 <div className="space-y-5">
                   <PasswordField
                     label="Current Password"
@@ -922,10 +891,7 @@ const Profile = () => {
                 <button
                   type="button"
                   onClick={() =>
-                    handleSettingChange(
-                      "twoFactor",
-                      !settings.twoFactor
-                    )
+                    handleSettingChange("twoFactor", !settings.twoFactor)
                   }
                   className={`relative h-7 w-12 rounded-full transition ${
                     settings.twoFactor
@@ -935,9 +901,7 @@ const Profile = () => {
                 >
                   <span
                     className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-all ${
-                      settings.twoFactor
-                        ? "left-6"
-                        : "left-1"
+                      settings.twoFactor ? "left-6" : "left-1"
                     }`}
                   />
                 </button>
@@ -959,24 +923,12 @@ const Profile = () => {
                   status="Good"
                 />
 
-                <SecurityCard
-                  title="Account"
-                  value="Active"
-                  status="Good"
-                />
+                <SecurityCard title="Account" value="Active" status="Good" />
 
                 <SecurityCard
                   title="2FA"
-                  value={
-                    settings.twoFactor
-                      ? "Enabled"
-                      : "Not enabled"
-                  }
-                  status={
-                    settings.twoFactor
-                      ? "Good"
-                      : "Recommended"
-                  }
+                  value={settings.twoFactor ? "Enabled" : "Not enabled"}
+                  status={settings.twoFactor ? "Good" : "Recommended"}
                   warning={!settings.twoFactor}
                 />
               </div>
@@ -1002,12 +954,7 @@ function getDefaultSettings() {
   };
 }
 
-const TabButton = ({
-  active,
-  icon: Icon,
-  label,
-  onClick,
-}) => {
+const TabButton = ({ active, icon: Icon, label, onClick }) => {
   return (
     <button
       type="button"
@@ -1024,11 +971,7 @@ const TabButton = ({
   );
 };
 
-const SectionHeader = ({
-  icon: Icon,
-  title,
-  description,
-}) => {
+const SectionHeader = ({ icon: Icon, title, description }) => {
   return (
     <div className="flex items-center gap-3 border-b border-slate-100 pb-5 dark:border-slate-800">
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-violet-600 dark:bg-violet-500/10 dark:text-violet-400">
@@ -1040,9 +983,7 @@ const SectionHeader = ({
           {title}
         </h2>
 
-        <p className="mt-1 text-sm text-slate-400">
-          {description}
-        </p>
+        <p className="mt-1 text-sm text-slate-400">{description}</p>
       </div>
     </div>
   );
@@ -1071,13 +1012,7 @@ const InfoItem = ({ icon: Icon, label, value }) => {
   );
 };
 
-const InputField = ({
-  label,
-  name,
-  value,
-  onChange,
-  type = "text",
-}) => {
+const InputField = ({ label, name, value, onChange, type = "text" }) => {
   return (
     <div>
       <label className="mb-2 block text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">
@@ -1120,29 +1055,17 @@ const PasswordField = ({
 
         <button
           type="button"
-          onClick={() =>
-            setShowPassword((prev) => !prev)
-          }
+          onClick={() => setShowPassword((prev) => !prev)}
           className="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg p-1.5 text-slate-400 transition hover:bg-slate-200 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-white"
         >
-          {showPassword ? (
-            <EyeOff size={17} />
-          ) : (
-            <Eye size={17} />
-          )}
+          {showPassword ? <EyeOff size={17} /> : <Eye size={17} />}
         </button>
       </div>
     </div>
   );
 };
 
-const ThemeOption = ({
-  active,
-  icon: Icon,
-  title,
-  description,
-  onClick,
-}) => {
+const ThemeOption = ({ active, icon: Icon, title, description, onClick }) => {
   return (
     <motion.button
       type="button"
@@ -1166,13 +1089,9 @@ const ThemeOption = ({
       </div>
 
       <div className="min-w-0">
-        <p className="font-bold text-slate-900 dark:text-white">
-          {title}
-        </p>
+        <p className="font-bold text-slate-900 dark:text-white">{title}</p>
 
-        <p className="mt-1 text-xs text-slate-400">
-          {description}
-        </p>
+        <p className="mt-1 text-xs text-slate-400">{description}</p>
       </div>
 
       {active && (
@@ -1202,18 +1121,14 @@ const SettingToggle = ({
           {title}
         </p>
 
-        <p className="mt-1 text-xs leading-5 text-slate-400">
-          {description}
-        </p>
+        <p className="mt-1 text-xs leading-5 text-slate-400">{description}</p>
       </div>
 
       <button
         type="button"
         onClick={() => onChange(!checked)}
         className={`relative h-7 w-12 shrink-0 rounded-full transition ${
-          checked
-            ? "bg-violet-600"
-            : "bg-slate-300 dark:bg-slate-700"
+          checked ? "bg-violet-600" : "bg-slate-300 dark:bg-slate-700"
         }`}
       >
         <span
@@ -1226,13 +1141,7 @@ const SettingToggle = ({
   );
 };
 
-const SelectField = ({
-  icon: Icon,
-  label,
-  value,
-  onChange,
-  options,
-}) => {
+const SelectField = ({ icon: Icon, label, value, onChange, options }) => {
   return (
     <div>
       <label className="mb-2 block text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">
@@ -1247,16 +1156,11 @@ const SelectField = ({
 
         <select
           value={value}
-          onChange={(event) =>
-            onChange(event.target.value)
-          }
+          onChange={(event) => onChange(event.target.value)}
           className="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 pl-11 text-sm font-medium text-slate-800 outline-none transition focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
         >
           {options.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-            >
+            <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}
@@ -1271,12 +1175,7 @@ const SelectField = ({
   );
 };
 
-const SecurityCard = ({
-  title,
-  value,
-  status,
-  warning = false,
-}) => {
+const SecurityCard = ({ title, value, status, warning = false }) => {
   return (
     <div className="rounded-2xl border border-slate-100 bg-slate-50/70 p-5 dark:border-slate-800 dark:bg-slate-950/40">
       <div className="flex items-center justify-between">
@@ -1286,9 +1185,7 @@ const SecurityCard = ({
 
         <span
           className={`h-2 w-2 rounded-full ${
-            warning
-              ? "bg-amber-500"
-              : "bg-emerald-500"
+            warning ? "bg-amber-500" : "bg-emerald-500"
           }`}
         />
       </div>
@@ -1311,4 +1208,3 @@ const SecurityCard = ({
 };
 
 export default Profile;
-

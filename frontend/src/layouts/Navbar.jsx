@@ -210,7 +210,7 @@ const Navbar = () => {
               ) : (
                 <img
                   className="h-full w-full object-cover"
-                  src="https://imgs.search.brave.com/VyfwlXZQeW1q9qu_sKEGAwxTEJnWTboByVpU2k7ovvw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/cG5nYXJ0cy5jb20v/ZmlsZXMvMTAvRGVm/YXVsdC1Qcm9maWxl/LVBpY3R1cmUtUE5H/LURvd25sb2FkLUlt/YWdlLnBuZw"
+                  src="https://imgs.search.brave.com/oNiMJxlgsMM0grkb92UQtUYIDQA-Cy14KUfTZq2xCFQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGlnaC9w/bGFjZWhvbGRlci1w/cm9maWxlLXNpbGhv/dWV0dGUtZHAzbzg2/a3UwaXMyNjYzaS5q/cGc"
                 />
               )}
             </div>

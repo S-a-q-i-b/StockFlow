@@ -43,6 +43,13 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/inventory", inventoryRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 
+app.get("/api/health", (_req, res) => {
+  res.json({
+    success: true,
+    message: "StockFlow API is healthy",
+  });
+});
+
 app.get("/", (_req, res) => {
   res.json({
     success: true,

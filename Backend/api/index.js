@@ -1,23 +1,24 @@
+require("dotenv").config();
+
 const app = require("../src/app");
 const connectDB = require("../src/config/db");
 
-let isConnected = false;
+let dbConnected = false;
 
-const handler = async (req, res) => {
+module.exports = async (req, res) => {
   try {
-    if (!isConnected) {
+    if (!dbConnected) {
       await connectDB();
-      isConnected = true;
+      dbConnected = true;
     }
 
     return app(req, res);
   } catch (error) {
-    console.error("Database connection failed:", error);
+    console.error("Server error:", error);
+
     return res.status(500).json({
       success: false,
-      message: "Database connection failed",
+      message: error.message || "Internal Server Error",
     });
   }
 };
-
-module.exports = handler;

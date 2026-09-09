@@ -577,8 +577,8 @@ const Profile = () => {
                 description="Choose a professional image for your StockFlow account."
               />
 
-              <div className="mt-6 flex flex-col gap-5 rounded-2xl border border-slate-100 bg-slate-50/70 p-5 sm:flex-row sm:items-center dark:border-slate-800 dark:bg-slate-950/40">
-                <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-100% bg-gradient-to-br from-violet-500 to-indigo-600 text-xl font-bold text-white">
+              <div className="mt-6 flex flex-col gap-5 rounded-2xl border border-slate-100 p-5 sm:flex-row sm:items-center dark:border-slate-800 dark:bg-slate-950/40">
+                <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-violet-500 to-indigo-600 text-xl font-bold text-white">
                   {profileImage ? (
                     <img
                       src={profileImage}

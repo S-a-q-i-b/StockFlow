@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
 
     return app(req, res);
   } catch (error) {
-    console.error("Server error:", error);
+    console.error("Vercel backend error:", error);
 
     return res.status(500).json({
       success: false,

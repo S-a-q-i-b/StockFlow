@@ -7,18 +7,24 @@ let dbConnected = false;
 
 module.exports = async (req, res) => {
   try {
+    console.log("REQUEST:", req.method, req.url);
+    console.log("ORIGIN:", req.headers.origin);
+
     if (!dbConnected) {
+      console.log("Connecting to MongoDB...");
       await connectDB();
       dbConnected = true;
+      console.log("MongoDB connected!");
     }
 
     return app(req, res);
   } catch (error) {
-    console.error("Vercel backend error:", error);
+    console.error("VERCEL ERROR:", error);
 
     return res.status(500).json({
       success: false,
       message: error.message || "Internal Server Error",
+      stack: process.env.NODE_ENV === "development" ? error.stack : undefined,
     });
   }
 };

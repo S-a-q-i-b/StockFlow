@@ -324,7 +324,7 @@ const Profile = () => {
               <div className="group relative">
                 <motion.div
                   whileHover={{ scale: 1.03 }}
-                  className="relative flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-4 border-white bg-gradient-to-br from-violet-500 to-indigo-600 text-3xl font-bold text-white shadow-2xl dark:border-slate-900"
+                  className="relative flex h-32 w-32 items-center justify-center overflow-hidden rounded-3xl border-4 border-white bg-gradient-to-br from-violet-500 to-indigo-600 text-3xl font-bold text-white shadow-2xl dark:border-slate-900"
                 >
                   {profileImage ? (
                     <img
@@ -420,7 +420,7 @@ const Profile = () => {
         </div>
       </motion.section>
 
-
+      {/* TABS */}
       <div className="flex overflow-x-auto rounded-2xl border border-slate-200 bg-white p-1.5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <TabButton
           active={activeTab === "profile"}
@@ -445,7 +445,7 @@ const Profile = () => {
       </div>
 
       <AnimatePresence mode="wait">
-
+        {/* PROFILE TAB */}
         {activeTab === "profile" && (
           <motion.div
             key="profile"
@@ -454,7 +454,7 @@ const Profile = () => {
             exit={{ opacity: 0, y: -12 }}
             className="space-y-8"
           >
-
+            {/* PERSONAL INFORMATION */}
             <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
               <SectionHeader
                 icon={User}
@@ -569,7 +569,7 @@ const Profile = () => {
               )}
             </section>
 
-
+            {/* PROFILE PICTURE CARD */}
             <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
               <SectionHeader
                 icon={ImagePlus}
@@ -577,8 +577,8 @@ const Profile = () => {
                 description="Choose a professional image for your StockFlow account."
               />
 
-              <div className="mt-6 flex flex-col gap-5 rounded-2xl border border-slate-100 p-5 sm:flex-row sm:items-center dark:border-slate-800 dark:bg-slate-950/40">
-                <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-violet-500 to-indigo-600 text-xl font-bold text-white">
+              <div className="mt-6 flex flex-col gap-5 rounded-2xl border border-slate-100 bg-slate-50/70 p-5 sm:flex-row sm:items-center dark:border-slate-800 dark:bg-slate-950/40">
+                <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-xl font-bold text-white">
                   {profileImage ? (
                     <img
                       src={profileImage}
@@ -586,10 +586,7 @@ const Profile = () => {
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    <img
-                      className="h-full w-full object-cover"
-                      src="https://imgs.search.brave.com/oNiMJxlgsMM0grkb92UQtUYIDQA-Cy14KUfTZq2xCFQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGlnaC9w/bGFjZWhvbGRlci1w/cm9maWxlLXNpbGhv/dWV0dGUtZHAzbzg2/a3UwaXMyNjYzaS5q/cGc"
-                    />
+                    getInitials(profile.name)
                   )}
                 </div>
 

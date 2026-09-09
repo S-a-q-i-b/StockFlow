@@ -322,7 +322,6 @@ const Sidebar = ({
             }
           `}
         >
-          {/* Avatar */}
           <div
             className={`
               flex
@@ -330,7 +329,7 @@ const Sidebar = ({
               items-center
               justify-center
               overflow-hidden
-              rounded-lg
+              rounded-full
               bg-slate-900
               text-xs
               font-bold

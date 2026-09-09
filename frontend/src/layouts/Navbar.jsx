@@ -208,8 +208,9 @@ const Navbar = () => {
                   className="h-full w-full object-cover"
                 />
               ) : (
-                <img className="h-full w-full object-cover"
-                  src="https://imgs.search.brave.com/BusPQb9nLSop7o-H0Z430q7-vz-dic3L5qMvP_dZtb4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzc0L2Ez/L2I2Lzc0YTNiNmE4/ODU2YjAwNGRmZmY4/MjRhZTk2NjhmZTli/LmpwZw"
+                <img
+                  className="h-full w-full object-cover"
+                  src="https://imgs.search.brave.com/VyfwlXZQeW1q9qu_sKEGAwxTEJnWTboByVpU2k7ovvw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/cG5nYXJ0cy5jb20v/ZmlsZXMvMTAvRGVm/YXVsdC1Qcm9maWxl/LVBpY3R1cmUtUE5H/LURvd25sb2FkLUlt/YWdlLnBuZw"
                 />
               )}
             </div>

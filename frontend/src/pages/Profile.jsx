@@ -569,7 +569,7 @@ const Profile = () => {
               )}
             </section>
 
-            {/* PROFILE PICTURE CARD */}
+
             <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
               <SectionHeader
                 icon={ImagePlus}
@@ -578,7 +578,7 @@ const Profile = () => {
               />
 
               <div className="mt-6 flex flex-col gap-5 rounded-2xl border border-slate-100 bg-slate-50/70 p-5 sm:flex-row sm:items-center dark:border-slate-800 dark:bg-slate-950/40">
-                <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-xl font-bold text-white">
+                <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-100% bg-gradient-to-br from-violet-500 to-indigo-600 text-xl font-bold text-white">
                   {profileImage ? (
                     <img
                       src={profileImage}

@@ -200,7 +200,7 @@ const Navbar = () => {
                 {user?.role || "Administrator"}
               </p>
             </div>
-            <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl bg-slate-900 text-sm font-bold text-white shadow-sm dark:bg-white dark:text-slate-900">
+            <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl">
               {profileImage ? (
                 <img
                   src={profileImage}

@@ -279,7 +279,6 @@ const Profile = () => {
       transition={{ duration: 0.5 }}
       className="space-y-8 pb-10"
     >
-      {/* HEADER */}
       <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-violet-600 dark:text-violet-400">
@@ -305,7 +304,6 @@ const Profile = () => {
         </div>
       </div>
 
-      {/* PROFILE HERO */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -335,7 +333,10 @@ const Profile = () => {
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    getInitials(profile.name)
+                    <img
+                      className="h-full w-full object-cover"
+                      src="https://imgs.search.brave.com/oNiMJxlgsMM0grkb92UQtUYIDQA-Cy14KUfTZq2xCFQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGlnaC9w/bGFjZWhvbGRlci1w/cm9maWxlLXNpbGhv/dWV0dGUtZHAzbzg2/a3UwaXMyNjYzaS5q/cGc"
+                    />
                   )}
 
                   {uploading && (
@@ -585,7 +586,10 @@ const Profile = () => {
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    getInitials(profile.name)
+                    <img
+                      className="h-full w-full object-cover"
+                      src="https://imgs.search.brave.com/oNiMJxlgsMM0grkb92UQtUYIDQA-Cy14KUfTZq2xCFQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGlnaC9w/bGFjZWhvbGRlci1w/cm9maWxlLXNpbGhv/dWV0dGUtZHAzbzg2/a3UwaXMyNjYzaS5q/cGc"
+                    />
                   )}
                 </div>
 

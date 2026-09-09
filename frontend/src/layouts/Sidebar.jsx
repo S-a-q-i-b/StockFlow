@@ -110,10 +110,6 @@ const Sidebar = ({
         }
       `}
     >
-      {/* =====================================================
-          HEADER
-      ====================================================== */}
-
       <div
         className={`
           relative flex h-20 shrink-0 items-center
@@ -123,7 +119,6 @@ const Sidebar = ({
           ${sidebarOpen ? "px-4" : "justify-center px-2"}
         `}
       >
-        {/* Brand */}
         <div
           className={`
             flex min-w-0
@@ -135,7 +130,6 @@ const Sidebar = ({
           <BrandLogo compact={!sidebarOpen} link />
         </div>
 
-        {/* Desktop Toggle */}
         <button
           type="button"
           onClick={handleToggleSidebar}
@@ -186,7 +180,6 @@ const Sidebar = ({
           )}
         </button>
 
-        {/* Mobile Close */}
         <button
           type="button"
           onClick={() => setMobileSidebarOpen(false)}
@@ -214,10 +207,6 @@ const Sidebar = ({
           <PanelLeftClose size={18} />
         </button>
       </div>
-
-      {/* =====================================================
-          NAVIGATION
-      ====================================================== */}
 
       <nav
         className={`
@@ -306,10 +295,6 @@ const Sidebar = ({
         </div>
       </nav>
 
-      {/* =====================================================
-          BOTTOM USER SECTION
-      ====================================================== */}
-
       <div
         className="
           shrink-0
@@ -364,11 +349,13 @@ const Sidebar = ({
                 className="h-full w-full object-cover"
               />
             ) : (
-              initials
+              <img
+                className="h-full w-full object-cover"
+                src="https://imgs.search.brave.com/oNiMJxlgsMM0grkb92UQtUYIDQA-Cy14KUfTZq2xCFQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGlnaC9w/bGFjZWhvbGRlci1w/cm9maWxlLXNpbGhv/dWV0dGUtZHAzbzg2/a3UwaXMyNjYzaS5q/cGc"
+              />
             )}
           </div>
 
-          {/* User Info */}
           {sidebarOpen && (
             <div className="min-w-0 flex-1">
               <p
@@ -379,9 +366,7 @@ const Sidebar = ({
                   text-slate-800
                   dark:text-white
                 "
-              >
-                {displayName}
-              </p>
+              ></p>
 
               <p className="truncate text-xs text-slate-400">
                 {user?.role || "Administrator"}
@@ -389,7 +374,6 @@ const Sidebar = ({
             </div>
           )}
 
-          {/* Logout */}
           {sidebarOpen && (
             <button
               type="button"

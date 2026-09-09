@@ -702,7 +702,7 @@ const Landing = () => {
         <div className="mx-auto flex max-w-7xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <Link to="/" className="flex items-center gap-2.5">
             <img
-              src="/favicon.png"
+              src="/logo.svg"
               alt="StockFlow"
               className="h-9 w-9 object-contain"
             />

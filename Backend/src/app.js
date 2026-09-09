@@ -14,10 +14,17 @@ const dashboardRoutes = require("./routes/dashboard.routes");
 
 const app = express();
 
+const allowedOrigins = [
+  "https://stockflowfrontend.vercel.app",
+  "http://localhost:5173",
+];
+
 app.use(
   cors({
-    origin: "https://stockflowfrontend.vercel.app",
+    origin: allowedOrigins,
     credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
 
